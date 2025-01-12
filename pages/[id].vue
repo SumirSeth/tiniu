@@ -1,6 +1,7 @@
 <template>
-  <div>
-    {{ route.params.id }}
+  <div class="h-screen bg-black flex text-white">
+    Thank you for using tiniu! <br>
+    Redirecting...
   </div>
 </template>
 
@@ -13,11 +14,13 @@ onMounted(async () => {
 
   try{
     const r = await $fetch(`/api/short/${route.params.id}`)
-    console.log(r)
+    navigateTo(r, {
+      external: true
+    })
+    // router.resolve(r)
   } catch (err) {
 
-    alert("Error")
-    console.log(err)
+    alert("Error: Not Found")
     router.push('/')
   }
 
