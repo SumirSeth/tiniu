@@ -8,7 +8,6 @@
         <p class="md:text-3xl sm:text-2xl text-2xl font-[Geist] font-thin italic">url shortener.</p>
         <p v-if="longurl.length > 0" class="opacity-20">( {{ longurl }} )</p> 
       </div>
-      
       <div v-if="output.length == 0" class="flex flex-col items-center gap-3 justify-center h-[80vh]">
         <div class="flex flex-row items-center gap-3">
           <label for="url" class="text-xl md:text-2xl font-[Geist] font-medium">enter a url:</label>
@@ -35,6 +34,9 @@
         <p class="">Copied to clipboard!</p>
       </div>
     </Transition>
+    <footer class="fixed bottom-0 flex flex-col items-center justify-center gap-3 p-2 text-white">
+      <p class="text-sm opacity-50 font-[Geist] font-thin">made with ❤️ by <a href="https://github.com/sumirseth" class="underline">sumir</a></p>
+    </footer>
   </div>
 </template>
 
