@@ -6,7 +6,7 @@
       <div class="flex flex-col sm:items-center gap-3 p-2">
         <p class="md:text-7xl sm:text-6xl text-6xl font-[Geist] font-bold text-pretty mt-10">tiniu: tiny urls.</p>
         <p class="md:text-3xl sm:text-2xl text-2xl font-[Geist] font-thin italic">url shortener.</p>
-        <p v-if="longurl.length > 0" class="opacity-20">( {{ longurl }} )</p> 
+        <p v-if="longurl.length > 0" class="opacity-20">( {{ longurl.length<30? longurl : longurl.slice(0,30) + '...' }} )</p>
       </div>
       <div v-if="output.length == 0" class="flex flex-col items-center gap-3 justify-center h-[80vh]">
         <div class="flex flex-row items-center gap-3">

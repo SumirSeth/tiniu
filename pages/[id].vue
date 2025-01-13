@@ -14,9 +14,10 @@ onMounted(async () => {
 
   try{
     const r = await $fetch(`/api/short/${route.params.id}`)
-    navigateTo(r, {
-      external: true
-    })
+    // navigateTo(r, {
+    //   external: true
+    // })
+    window.location.href = r.url
     // router.resolve(r)
   } catch (err) {
 
