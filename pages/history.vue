@@ -10,7 +10,13 @@
         </div>
       </div>
 
-      <div class="flex flex-col gap-5 p-2 rounded-xl h-[75vh] font-[Geist] items-start justify-center">
+
+      <div v-if="urlHistory.length === 0" class="flex flex-col gap-5 p-2 rounded-xl h-[75vh] font-[Geist] items-start justify-center">
+        <p><span class="opacity-60 italic">no history found. </span>try to shortening a url!</p>
+      </div>
+
+
+      <div v-else class="flex flex-col gap-5 p-2 rounded-xl h-[75vh] font-[Geist] items-start justify-center">
         <ul>
           <li v-for="url in urlHistory" class="list-item list-decimal p-2">
               <p>{{ mainURL }}/<span class=" pl-1 px-3 py-1 rounded-xl bg-gray-900 font-[Geist]  text-white">{{ url.short_url.slice(-6) }}</span></p>
