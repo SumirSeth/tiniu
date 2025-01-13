@@ -9,18 +9,19 @@
 
 const router = useRouter()
 const route = useRoute()
+const { id } = route.params
 
 onMounted(async () => {
 
   try{
-    const r = await $fetch(`/api/short/${route.params.id}`)
+    // const r = await $fetch(`/api/short/${route.params.id}`)
     // navigateTo(r, {
     //   external: true
     // })
-    window.location.href = r.url
+    window.location.href = `/api/short/${id}`
     // router.resolve(r)
   } catch (err) {
-
+    console.log(err)
     alert("Error: Not Found")
     router.push('/')
   }

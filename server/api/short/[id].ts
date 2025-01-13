@@ -16,5 +16,5 @@ export default defineEventHandler(async (event) => {
   }
 
   // return sendRedirect(event, data.long_url, 302);
-  return { url: data.long_url };
+  return sendRedirect(event, data.long_url, 301);
 });
