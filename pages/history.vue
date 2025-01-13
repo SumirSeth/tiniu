@@ -10,11 +10,14 @@
         </div>
       </div>
 
-      <div class="flex flex-col gap-5 p-2 rounded-xl h-[75vh] font-[Geist] items-center justify-center">
-        <div v-for="url in urlHistory">
-            <p>{{ mainURL }}/<span class="px-3 py-1 rounded-xl bg-gray-900 font-[Geist]  text-white">{{ url.short_url.slice(-6) }}</span></p>
-          <p>original url: <a :href=url.long_url>{{ url.long_url.length > 30? url.long_url.slice(0,30) + '...' : url.long_url }}</a></p>
-        </div>
+      <div class="flex flex-col gap-5 p-2 rounded-xl h-[75vh] font-[Geist] items-start justify-center">
+        <ul>
+          <li v-for="url in urlHistory" class="list-item list-decimal p-2">
+              <p>{{ mainURL }}/<span class=" pl-1 px-3 py-1 rounded-xl bg-gray-900 font-[Geist]  text-white">{{ url.short_url.slice(-6) }}</span></p>
+              <p><span class="opacity-60">original url: </span><a class="text-blue-600" :href=url.long_url>{{ url.long_url.length > 30? url.long_url.slice(0,30) + '...' : url.long_url }}</a></p>
+              <p><span class="opacity-60">created at: </span> {{ url.created_at }}</p>
+          </li>
+        </ul>
       </div>
 
 
@@ -26,15 +29,25 @@
 
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 
-const mainURL = window.location.origin
+interface UrlRecord {
+  short_url: string;
+  long_url: string;
+  created_at: string;
+}
 
-const urlHistory = ref([])
-onMounted(async () => {
+const mainURL = ref('')
+const urlHistory = ref<UrlRecord[]>([])
+
+onMounted(() => {
+  mainURL.value = window.location.origin
   const history = JSON.parse(localStorage.getItem('urlHistory') || '[]')
-  urlHistory.value = history
+  urlHistory.value = history.map((item: any) => ({
+    ...item,
+    created_at: new Date(item.created_at).toDateString()
+  }))
 })
-
 </script>
 
 <style>
