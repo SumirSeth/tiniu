@@ -17,6 +17,5 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  // Return the URL instead of redirecting
   return { long_url: data.long_url };
 });

@@ -1,8 +1,8 @@
 <template>
-  <div class="h-screen bg-black flex text-white">
+  <!-- <div class="h-screen bg-black flex text-white">
     Thank you for using tiniu! <br>
     Redirecting...
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts" setup>

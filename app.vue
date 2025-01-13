@@ -1,4 +1,5 @@
 <template>
+  <Link rel="icon" href="/favicon.svg" />
   <Title>tiniu: url shortener</Title>
   <Meta name="description" content="tiniu: url shortener" />
   <NuxtPage />
